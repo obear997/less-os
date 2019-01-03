@@ -10,3 +10,26 @@ whir_css.less  -less源码，存放项目less源码
 
 <br /><br />
 方法列表：<br />
+
+<table width="100%">
+	<tr>
+		<th>方法</th>
+		<th>作用</th>
+		<th>参数说明</th>
+	</tr>
+	<tr>
+		<td>.clear-mp()</td>
+		<td>清除margin和padding</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>.box-sizing()</td>
+		<td>box-sizing 盒模型计算方式</td>
+		<td>
+			可设置1个参数<br />
+			默认值： content-box<br />
+			可选值：<br />
+			content-box <br />padding-box <br />border-box
+		</td>
+	</tr>
+</table>
