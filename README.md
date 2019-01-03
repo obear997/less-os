@@ -5,7 +5,7 @@ less-os是一个简单实用的less库，由作者从日常项目中积累整理
 
 <br /><br />
 文件说明：<br />
-less_os.less   -less库主文件，存放公共属性和方法
+less_os.less   -less库主文件，存放公共属性和方法<br />
 whir_css.less  -less源码，存放项目less源码
 
 <br /><br />
