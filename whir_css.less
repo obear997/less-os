@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+//引入公共变量和公共方法
+@import "less_os.less";
+
+
+//*****************************************************************************************//
+/*全局初始化样式*/
+*{ outline: none;
+   &,
+   &:before,
+   &:after{ .box-sizing(border-box );}
+}
+html{ height: 100%;
+-webkit-text-size-adjust:100%;
+    -ms-text-size-adjust: 100%;
+}
+body{ padding:0; margin:0 auto; font-size: @base-font-size; line-height: @base-line-height; font-family: @base-font; color: @base-color; min-width: 320px; width: 100%; zoom:1;
+background-color: @base-bg-color;
+/*禁用Webkit内核浏览器的文字大小调整功能*/
+-webkit-text-size-adjust:none; 
+
+/*取消点击出现半透明的灰色背景*/
+-webkit-tap-highlight-color: rgba(0,0,0,0); 
+-webkit-tap-highlight: rgba(0,0,0,0);
+
+/*控制文本可选性 - 未启用*/
+/* -webkit-user-select: none;
+   -moz-user-select: none;
+        user-select: none; */
+        
+/*设置字体的抗锯齿或者说光滑度*/
+-webkit-font-smoothing: antialiased
+}
+
+/*默认去除ul、li的默认样式*/
+.p,.h1,.h2,.h3,.h4,.h5,.h6{ .clear-mp();}
+.ul,.ul li,.dl,.dl dd,.dl dt{ list-style:none; .clear-mp();}
+address,caption,cite,code,dfn,em,strong,th,var{ font-style:normal; font-weight:normal;}
+
+/*初始化下拉菜单、单行输入框、多行输入框的样式*/
+select,input,textarea{
+color: @base-color; .border-radius(0); font-family:inherit; font-size:inherit; font-weight:inherit; 
+/*for IE*/
+*font-size:100%;
+} 
+input:focus { outline: none;}
+/*不允许多行输入文本框有滚动条*/
+textarea{ resize:none; -webkit-appearance:none; } 
+
+/*初始化表单元素样式*/
+textarea,input,select{ background:none; border:none; .clear-mp();}
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"]{ -webkit-appearance:none; cursor: pointer;} 
+
+button[disabled],
+input[disabled]{ cursor: default;}
+
+/*初始化HTML5标签样式*/
+audio,canvas,progress,video { display: inline-block; vertical-align:baseline;}
+article,aside,footer,header,hgroup,nav,section,figure,figcaption{ display:block;}
+/*去除figure边距*/
+figure,figcaption{ .clear-mp();}
+
+/*设置placeholder*/
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{ color: @input-place-color;}
+input:-moz-placeholder,
+textarea:-moz-placeholder{color: @input-place-color;}
+input::-moz-placeholder,
+textarea::-moz-placeholder{color: @input-place-color;}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder{color: @input-place-color;}
+
+/*初始化图片样式*/
+img{ border:none; border:0; max-width:100%; vertical-align:top;}
+
+/*初始化a的样式和字体样式*/
+a{ color: @base-a-color; text-decoration:none; -webkit-tap-highlight-color:rgba(0,0,0,0);
+   &:focus{ outline:none; -moz-outline:none; }
+   &:hover{ color: @base-a-hover-color; }
+}
+
+/*清除浮动*/
+.clear{ clear:both; height:0px; overflow:hidden;}
+
+.clearfix{ zoom: 1;
+   &:after{ content: "."; display: block; height: 0; visibility: hidden; clear: both; font-size: 0px; }
+}
+
+/*设置内容宽度*/
+.w1200{ width: 98%; margin: 0 auto;}
+
+@media(min-width:1200px){
+    .w1200{ width: 1200px;}
+}
+//*****************************************************************************************//
+
+
+
+//*****************************************************************************************//
+/*页面框架结构*/
+.contain{} /*页面主体内容*/
+.slidebar{} /*边侧菜单*/
+.maincontent{} /*主要内容*/
+.content{} /*内容*/
+.txt-justify,
+.singlepage{ text-justify:inter-ideograph; text-align:justify; word-wrap:break-word; overflow:hidden;} /*单片 设置文字两端对齐*/
+.current{ /*当前位置*/}
+
+
+/*分页*/
+.pages{}
+/*分页*/
+
+
+/*头部*/
+.top{}
+.mainnav{}
+/*头部*/
+
+
+/*底部*/
+.bottom{}
+/*底部*/
+
+
+/*页面二级/左侧/右侧菜单*/
+.slidebar{}
+/*页面二级/左侧/右侧菜单*/
+//*****************************************************************************************//
+
+
+
+
+
+
+
+
+
+/*网站地图*/
+.ul_sitemap li{ border-bottom:dotted 1px #ddd; padding:5px 0px;}
+.ul_sitemap li strong{ width:90px; display:inline-block;}

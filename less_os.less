@@ -1,0 +1,773 @@
+//=============================================
+//@des:      less-os
+//@author:   obear
+//@time:     2018-12-17
+//@summary:  Define public variables and methods
+//=============================================
+
+
+
+//设置全局变量
+//=============================================
+@base-bg-color: #fff;  //页面基础背景色
+@base-color: #999;  //页面基础颜色
+@base-stress-color: #f8b530; //选中、突出颜色
+@base-font: Microsoft YaHei,'微软雅黑','宋体';  //页面基础字体
+@base-font-size: 3rem;  //页面基础字体大小
+@base-line-height: 1.5;  //页面基础行高
+@base-a-color: #666460;  //a默认颜色
+@base-a-hover-color: #FF5800;  //a:hover默认颜色
+@input-place-color: #c4c4c4;  //input-placeholder默认颜色
+
+
+
+//定义全局方法
+//=============================================
+//清除margin和padding
+.clear-mp(){
+    margin: 0; padding: 0;
+}
+
+
+//box-sizing 盒模型计算方式
+//*
+//* @params        content-box padding-box border-box       
+//*
+.box-sizing(@boxmodel: content-box) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+
+//设置弹性盒子
+.display-flex(){
+  -webkit-display: flex;
+  display: flex;
+}
+
+
+//自定义字体(font-face)
+//* 
+//@path: 字体路径; 
+//@font-name: 字体名字; 需要同时存在eot woff ttf svg
+//调用方法，如：.font-face('../fonts',webfont);
+//*
+.font-face(@path: '../fonts', @font-name){
+  @font-face{
+    font-family: '@{font-name}';
+    src: url('@{path}/@{font-name}.eot'); /* IE9 Compat Modes */
+    src: url('@{path}/@{font-name}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('@{path}/@{font-name}.woff') format('woff'), /* Modern Browsers */
+         url('@{path}/@{font-name}.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('@{path}/@{font-name}.svg#svgFontName') format('svg'); /* Legacy iOS */
+         
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+
+//writing-mode 定义文本在水平或垂直方向上如何排布
+//*
+//writing-mode{
+//              [ horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr ]
+//}
+//horizontal-tb：水平方向自上而下的书写方式。即 left-right-top-bottom
+//vertical-rl：垂直方向自右而左的书写方式。即 top-bottom-right-left
+//vertical-lr：垂直方向内内容从上到下，水平方向从左到右
+//sideways-rl：内容垂直方向从上到下排列
+//sideways-lr：内容垂直方向从下到上排列
+//*
+.writing-mode(@mode: horizontal-tb){
+  -webkit-writing-mode: @mode;
+      -ms-writing-mode: @mode;
+          writing-mode: @mode;
+
+}
+
+
+//计算器
+//*
+//calc() = calc(四则运算)
+//需要注意的是，运算符前后都需要保留一个空格，例如：width: calc(100% - 10px)
+//调用方法：.calc(width, ~"100% - 159px - 5%");
+//*
+.calc(width, @content: 0){
+  width: -webkit-calc(@content);
+  width:    -moz-calc(@content);
+  width:         calc(@content);
+}
+.calc(height, @content: 0){
+  height: -webkit-calc(@content);
+  height:    -moz-calc(@content);
+  height:         calc(@content);
+}
+
+
+//设置圆角
+//四角(border-radius),默认是为5px
+.border-radius(@radius: 5px){
+    -webkit-border-radius: @radius;
+       -moz-border-radius: @radius;
+            border-radius: @radius;
+}
+.border-cus-radius(@radiusTop: 5px, @radiusRight: 5px, @radiusLeft: 5px, @radiusBottom: 5px){
+    -webkit-border-radius: @arguments;
+       -moz-border-radius: @arguments;
+            border-radius: @arguments;
+}
+//单角,默认5px
+.border-tl-radius(@radius: 5px) {
+  -webkit-border-top-left-radius: @radius;
+     -moz-border-top-left-radius: @radius;
+          border-top-left-radius: @radius;
+}
+.border-tr-radius(@radius: 5px) {
+  -webkit-border-top-right-radius: @radius;
+     -moz-border-top-right-radius: @radius;
+          border-top-right-radius: @radius;
+}
+.border-bl-radius(@radius: 5px) {
+  -webkit-border-bottom-left-radius: @radius;
+     -moz-border-bottom-left-radius: @radius;
+          border-bottom-left-radius: @radius;
+}
+.border-br-radius(@radius: 5px) {
+  -webkit-border-bottom-right-radius: @radius;
+     -moz-border-bottom-right-radius: @radius;
+          border-bottom-right-radius: @radius;
+}
+//单边,默认5px
+.border-top-radius(@radius: 5px) {
+  .border-tl-radius(@radius);
+  .border-tr-radius(@radius);
+}
+.border-right-radius(@radius: 5px) {
+  .border-tr-radius(@radius);
+  .border-br-radius(@radius);
+}
+.border-bottom-radius(@radius: 5px) {
+  .border-br-radius(@radius);
+  .border-bl-radius(@radius);
+}
+.border-left-radius(@radius: 5px) {
+  .border-tl-radius(@radius);
+  .border-bl-radius(@radius);
+}
+
+
+//*
+//* border-image
+//* @params <'border-image-source'> || <'border-image-slice'> 
+//* [ / <'border-image-width'> | / <'border-image-width'>? / <'border-image-outset'> ]? || <'border-image-repeat'>
+//* 存在问题
+//*
+.border-image(@url, @width, @repeat){
+        border: '@{width} solid transparent';
+-webkit-border-image:url('@{url}') @width @width @repeat; 
+   -moz-border-image:url('@{url}') @width @width @repeat;
+        border-image:url('@{url}') @width @width @repeat;
+}
+
+
+//设置阴影
+//*
+//* border-shadow/text-shadow
+//* @params  none | [inset? && [ <offset-x> <offset-y> <blur-radius>? <spread-radius>? <color>? ] ]#
+//*          none | [内映射? && [横向平移 纵向平移 模糊? 扩散? 颜色?]]#
+//*
+//盒子阴影
+.no-box-shadow(){
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+.box-shadow(@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  -webkit-box-shadow: @arguments;
+     -moz-box-shadow: @arguments;
+          box-shadow: @arguments;
+}
+//文本阴影
+.no-text-shadow(){
+  -webkit-text-shadow: none;
+     -moz-text-shadow: none;
+          text-shadow: none;
+}
+.text-shadow(@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  -webkit-text-shadow: @arguments;
+     -moz-text-shadow: @arguments;
+          text-shadow: @arguments;
+}
+
+//文本截取
+//单行文本
+.text-overflow(){
+	white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+//多行文本，默认截取2行
+.text-xline(@line: 2){
+	text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: @line; -webkit-box-orient: vertical;
+}
+
+
+//全局定位
+.pos-rel(){
+	position: relative;
+}
+.pos-abs(){
+	position: absolute;
+}
+.pos-fix(){
+	position: fixed;
+}
+//定位居中(margin-left),适合有固定宽度
+.pos-center(@width: 600px, @height: 300px, @position: absolute){
+  width: @width; height: @height; position: @position; left: 50%; top: 50%; margin-left: -@width / 2; margin-top: -@height / 2;
+}
+//定位居中(translate)，适合没有固定宽度且不需要支持IE8以下浏览器
+.pos-center-trans(@position: absolute){
+	position: @position; left: 50%; top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+       -moz-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
+}
+
+
+//设置透明度
+.opacity(@opacity: 80) {
+  opacity: @opacity / 100;
+  filter: ~"alpha(opacity=@{opacity})";
+}
+
+
+//设置背景
+//*
+//*调用方法，如：.bg-image('../images/img.jpg',center,center,no-repeat);
+//*
+.background-image(@image, @position: left top, @repeat: no-repeat, @size: auto){
+	background-image: url('@{image}');
+	background-position: @position;
+	background-repeat: @repeat;
+
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+       -o-background-size: @size;
+	        background-size: @size;
+}
+
+//背景尺寸(background-size)
+//*
+//*@params [ [ <length> | <percentage> | auto ] | cover | contain ]
+//*
+.background-size(@size: auto){
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+          background-size: @size;
+}
+
+//* background-clip 背景覆盖的位置
+//* @params  [ border-box || padding-box || content-box]
+//*
+.background-clip(@background-clip: border-box){
+          -webkit-background-clip: @background-clip;
+             -moz-background-clip: @background-clip;
+                  background-clip: @background-clip;
+}
+
+//*
+//* background-origin 背景开始的位置
+//* @params   [padding-box | border-box | content-box][, [border-box | padding-box | content-box]]
+//*
+.background-origin(@background-origin: padding-box){
+          -webkit-background-origin: @background-origin;
+             -moz-background-origin: @background-origin;
+                  background-origin: @background-origin;
+}
+
+//设置透明背景色
+//* 注意！ 
+//:root &{
+//        * IE9 由于rgba和filter都支持，会导致两个颜色叠加，使用hack去除 
+//        * \9 代表 IE9 以下浏览器支持
+//        * :root 只有 IE9+ 以及其他现代浏览器支持
+//        * IE10 以上不再支持 filter
+//        * & 代表选择器,如：:root .demo{ filter:none;}
+//         
+//        filter:none;
+//}
+//*
+.background-rgba(@red, @green, @blue, @alpha: 1){
+    @color:rgba(@red,@green,@blue,@alpha);
+    @filtercolor:argb(@color);
+
+    background-color: @color;
+    -ms-filter:~"progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='@{filtercolor}',endColorstr='@{filtercolor}')";
+        filter:~"progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='@{filtercolor}',endColorstr='@{filtercolor}')";
+}
+
+
+//mask 设置遮罩
+//mask属性缩写使用 mask: xxx, 可拆分为下列属性
+//mask-image: 指遮罩使用的图片资源,默认值是none. 语法上支持CSS3各类渐变,以及url()功能符,image()功能符,甚至element()功能符. 同时还支持多背景 
+//url() 可支持格式JPG, PNG以及SVG等. 格式： mask-image: url(loading.png);
+//image() 目前Chrome和Firefox尚未支持image()功能符. 格式: mask-image: image(url(loading.png), skyblue);
+//image-set() 目前Edge, Firefox都不支持,Chrome/Safari/Android都可以无障碍使用. 该功能主要作用是可以让不同屏幕密度设备加载不同的图片资源. 格式: mask-image: image-set(url(loading.png) 1x, url(star.svg) 2x);
+//cross-fade() 图片透明叠加.  目前Chrome和移动端可以使用，Edge, Firefox尚不支持. 格式: mask-image: cross-fade(url(loading.png), url(star.svg), 50%);
+//element() 可以让页面上的DOM元素作为图片显示. firefox浏览器支持element()功能符，并且需要-moz-私有前缀. 使用方法：、
+//<h4 id="title">作为图片的标题文字</h4>
+//.mask-image { mask-image: element(#title);  }
+//
+//mask-mode: 根据资源的类型自动采用合适的遮罩模式,目前仅Firefox浏览器支持,可以支持同事设置多个值,默认值是match-source. 支持3个属性值: [ alpha | luminance | match-source ]
+//
+//mask-repeat: 设置图形填充,默认值是repeat
+//repeat-x 水平x平铺
+//repeat-y 垂直y平铺
+//repeat 默认值,水平和垂直平铺
+//no-repeat 不平铺
+//space 表示遮罩图片尽可能的平铺同时不发生任何剪裁
+//round 表示遮罩图片尽可能靠在一起没有任何间隙，同时不发生任何剪裁. 这就意味着图片可能会有比例的缩放
+//
+//mask-position: 设置图形位置
+//mask-clip: 设置裁切,可设置多值. 支持属性值: [ content-box | padding-box | border-box | fill-box | stroke-box | view-box | no-clip ]
+//mask-origin: 支持属性值: [ content-box | padding-box | border-box | fill-box | stroke-box | view-box ]
+//mask-size: 控制遮罩图片尺寸,默认值是auto. 支持: [ contain | cover | num | % ]
+//mask-type: 设置不同的遮罩模式,默认值是luminance,亮度遮罩模式.  如果需要支持透明度遮罩模式, 可以设置: mask-type: alpha;
+//
+//mask-composite: 表示当同时使用多个图片进行遮罩时候的混合方式. 支持属性: [ add | subtract | intersect | exclude ]
+//add 遮罩累加
+//subtract 遮罩相减. 也就是遮罩图片重合的地方不显示. 意味着遮罩图片越多,遮罩区域越小
+//intersect 罩相交. 也就是遮罩图片重合的地方才显示遮罩
+//exclude 遮罩排除. 也就是后面遮罩图片重合的地方排除，当作透明处理
+.mask(@url: none,@position: left top,@repeat: no-repeat,@size: auto,@clip: no-clip){
+  .mask-image(@url);
+  .mask-position(@position);
+  .mask-repeat(@repeat);
+  .mask-size(@size);
+  .mask-clip(@clip);
+}
+.mask-image(@url: none){
+  -webkit-mask-image: url(@url);
+          mask-image: url(@url);
+}
+.mask-mode(@mode: match-source){
+  mask-mode: @mode;
+}
+.mask-repeat(@type: no-repeat){
+  -webkit-mask-repeat: @type;
+          mask-repeat: @type;
+}
+.mask-position(@type){
+  -webkit-mask-position: @type;
+          mask-position: @type;
+}
+.mask-clip(@type: no-clip){
+  -webkit-mask-clip: @type;
+          mask-clip: @type;
+}
+.mask-origin(@type){
+  -webkit-mask-origin: @type;
+          mask-origin: @type;
+}
+.mask-size(@type: auto){
+  -webkit-mask-size: @type;
+          mask-size: @type;
+}
+.mask-type(@type: luminance){
+  mask-type: @type;
+}
+.mask-composite(@type: add){
+  mask-composite: @type;
+}
+.no-mask(){
+  -webkit-mask: none;
+          mask: none;
+}
+
+
+//设置三角形
+.triangle(top, @width :5px, @color: #ccc){
+	width: 0; height: 0; font-size:0; line-height: 0;
+	border-style:solid dashed dashed dashed;
+    border-color:@color transparent transparent transparent;
+    border-width:@width;
+}
+.triangle(right, @width :5px, @color: #ccc){
+	width: 0; height: 0; font-size:0; line-height: 0;
+	border-style:dashed solid dashed dashed;
+    border-color:transparent @color transparent transparent;
+    border-width:@width;
+}
+.triangle(bottom, @width :5px, @color: #ccc){
+	width: 0; height: 0; font-size:0; line-height: 0;
+	border-style:dashed dashed solid dashed;
+    border-color:transparent transparent @color transparent;
+    border-width:@width;
+}
+.triangle(left, @width :5px, @color: #ccc){
+	width: 0; height: 0; font-size:0; line-height: 0;
+	border-style:dashed dashed dashed solid;
+    border-color:transparent transparent transparent @color;
+    border-width:@width;
+}
+.triangle(@_, @width :5px, @color: #ccc){
+   .triangle-compatible();
+}
+//边框附加内容
+.triangle-compatible(){
+    width: 0; height: 0; overflow:hidden;
+}
+
+
+//分列布局
+//*
+//*注意！：IE9及以下浏览器不支持 column-count 属性
+//*column-count设置列数
+//*@params   [column-width | column-count]
+//*
+//*column-gap指定列之间的间距
+//*
+//*column-rule指定列之间的规则：宽度，样式和颜色
+//*column-rule-width指定宽度
+//*@params   [thin | medium | thick | length]
+//*thin	指定一个细边框的规则
+//*medium定义一个中等边框规则 | thick指定一个粗边框的规则 | length指定宽度的规则
+//*
+//*column-rule-style指定列之间的样式
+//*@params   [none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset]
+//*none定义没有规则 | hidden	定义隐藏规则 |  dotted定义点状规则 | dashed 定义虚线规则 | solid 定义实线规则 | double 定义双线规则
+//*groove 定义 3D grooved 规则。该效果取决于宽度和颜色值 | ridge 定义 3D ridged 规则。该效果取决于宽度和颜色值
+//*inset 定义 3D inset 规则。该效果取决于宽度和颜色值 | outset 定义 3D outset 规则。该效果取决于宽度和颜色值
+//*
+//*column-rule-color指定列之间的颜色
+//*
+.content-columns(@columnCount, @columnGap, @rule-width: 0, @rule-style: none, @rule-color: #000) {
+  -webkit-column-count: @columnCount;
+     -moz-column-count: @columnCount;
+          column-count: @columnCount;
+  -webkit-column-gap: @columnGap;
+     -moz-column-gap: @columnGap;
+          column-gap: @columnGap;
+  -webkit-column-rule:@rule-width @rule-style @rule-color;
+     -moz-column-rule:@rule-width @rule-style @rule-color;
+	      column-rule:@rule-width @rule-style @rule-color;
+}
+
+
+//transformation 
+//* @params  
+//*
+//* transform: none
+//* transform: matrix(1.0, 2.0, 3.0, 4.0, 5.0, 6.0)
+//* transform: translate(12px, 50%)
+//* transform: translateX(2em)
+//* transform: translateY(3in)
+//* transform: scale(2, 0.5)
+//* transform: scaleX(2)
+//* transform: scaleY(0.5)
+//* transform: rotate(0.5turn)
+//* transform: skewX(30deg)
+//* transform: skewY(1.07rad)
+//* transform: matrix3d(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0)
+//* transform: translate3d(12px, 50%, 3em)
+//* transform: translateZ(2px)
+//* transform: scale3d(2.5, 1.2, 0.3)
+//* transform: scaleZ(0.3)
+//* transform: rotate3d(1, 2.0, 3.0, 10deg)
+//* transform: rotateX(10deg)
+//* transform: rotateY(10deg)
+//* transform: rotateZ(10deg)
+//* transform: perspective(17px)
+//* transform: translateX(10px) rotate(10deg) translateY(5px)
+//*
+.no-transform(){
+  -webkit-transform: none;
+     -moz-transform: none;
+      -ms-transform: none;
+       -o-transform: none;
+          transform: none;
+}
+.rotate(@degrees: 0deg) {
+  -webkit-transform: rotate(@degrees);
+     -moz-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees);
+       -o-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+.rotate3d(@x: 0, @y: 0, @z: 0, @degrees: 0deg){
+  -webkit-transform: rotate3d(@arguments);
+     -moz-transform: rotate3d(@arguments);
+      -ms-transform: rotate3d(@arguments);
+       -o-transform: rotate3d(@arguments);
+          transform: rotate3d(@arguments);
+}
+.rotateX(@degrees: 0deg){
+  -webkit-transform: rotateX(@arguments);
+     -moz-transform: rotateX(@arguments);
+      -ms-transform: rotateX(@arguments);
+       -o-transform: rotateX(@arguments);
+          transform: rotateX(@arguments);
+}
+.rotateY(@degrees: 0deg){
+  -webkit-transform: rotateY(@arguments);
+     -moz-transform: rotateY(@arguments);
+      -ms-transform: rotateY(@arguments);
+       -o-transform: rotateY(@arguments);
+          transform: rotateY(@arguments);
+}
+.rotateZ(@degrees: 0deg){
+  -webkit-transform: rotateZ(@arguments);
+     -moz-transform: rotateZ(@arguments);
+      -ms-transform: rotateZ(@arguments);
+       -o-transform: rotateZ(@arguments);
+          transform: rotateZ(@arguments);
+}
+
+//缩放
+.scale(@x:0, @y:0) {
+  -webkit-transform: scaleX(@x) scaleY(@y);
+     -moz-transform: scaleX(@x) scaleY(@y);
+      -ms-transform: scaleX(@x) scaleY(@y);
+       -o-transform: scaleX(@x) scaleY(@y);
+          transform: scaleX(@x) scaleY(@y);
+}
+.scaleX(@x: 0) {
+  -webkit-transform: scaleX(@arguments);
+     -moz-transform: scaleX(@arguments);
+      -ms-transform: scaleX(@arguments);
+       -o-transform: scaleX(@arguments);
+          transform: scaleX(@arguments);
+}
+.scaleY(@y: 0) {
+  -webkit-transform: scaleY(@arguments);
+     -moz-transform: scaleY(@arguments);
+      -ms-transform: scaleY(@arguments);
+       -o-transform: scaleY(@arguments);
+          transform: scaleY(@arguments);
+}
+
+//重定位元素
+.translate(@x: 0, @y: 0) {
+  -webkit-transform: translate(@arguments);
+     -moz-transform: translate(@arguments);
+      -ms-transform: translate(@arguments);
+       -o-transform: translate(@arguments);
+          transform: translate(@arguments);
+}
+.translate3d(@x: 0, @y: 0, @z: 0) {
+  -webkit-transform: translate3d(@arguments);
+     -moz-transform: translate3d(@arguments);
+       -o-transform: translate3d(@arguments);
+          transform: translate3d(@arguments);
+}
+.translateX(@x: 0){
+  -webkit-transform: translateX(@x);
+     -moz-transform: translateX(@x);
+      -ms-transform: translateX(@x);
+       -o-transform: translateX(@x);
+          transform: translateX(@x);
+}
+.translateY(@y: 0){
+  -webkit-transform: translateY(@y);
+     -moz-transform: translateY(@y);
+      -ms-transform: translateY(@y);
+       -o-transform: translateY(@y);
+          transform: translateY(@y);
+}
+.translateZ(@z: 0){
+  -webkit-transform: translateZ(@z);
+     -moz-transform: translateZ(@z);
+      -ms-transform: translateZ(@z);
+       -o-transform: translateZ(@z);
+          transform: translateZ(@z);
+}
+
+//倾斜
+.skew(@x: 0deg, @y: 0deg) {
+  -webkit-transform: skew(@arguments);
+     -moz-transform: skew(@arguments);
+      -ms-transform: skewX(@x) skewY(@y); 
+       -o-transform: skew(@arguments);
+          transform: skew(@arguments);
+  -webkit-backface-visibility: hidden;
+}
+.skewX(@x: 0deg) {
+  -webkit-transform: skewX(@x);
+     -moz-transform: skewX(@x);
+      -ms-transform: skewX(@x);
+       -o-transform: skewX(@x);
+          transform: skewX(@x);
+  -webkit-backface-visibility: hidden;
+  //Webkit gives a pixelated edge. This can be resolved by adding the following line to the mixin. -webkit-backface-visibility: hidden;
+}
+.skewY(@y: 0deg) {
+  -webkit-transform: skewY(@y);
+     -moz-transform: skewY(@y);
+      -ms-transform: skewY(@y); 
+       -o-transform: skewY(@y);
+          transform: skewY(@y);
+  -webkit-backface-visibility: hidden;
+}
+
+
+
+//3D 转换
+//transform-style
+//*
+//*transform-style 属性规定如何在 3D 空间中呈现被嵌套的元素
+//*@params  [ flat | preserve-3d ]
+//*flat 子元素将不保留其 3D 位置(默认值)
+//*preserve-3d 子元素将保留其 3D 位置
+//*
+.transform-style(@params){
+  -webkit-transform-style: @params;
+          transform-style: @params;
+}
+
+
+
+//transition css3 动画
+//*
+//*@params  [<'transition-property'> || <'transition-duration'> || <'transition-timing-function'> || <'transition-delay'> 
+//*         [, [<'transition-property'> || <'transition-duration'> || <'transition-timing-function'> || <'transition-delay'>]]
+//*
+//transition-property设置transition需要过渡效果的 CSS 属性的名称
+//*
+//* @type: {css-property}
+//*
+.transition-property(@transition-property){
+  -webkit-transition-property: @transition-property;
+     -moz-transition-property: @transition-property;
+       -o-transition-property: @transition-property;
+          transition-property: @transition-property;
+}
+
+//持续时间
+//*
+//* @type {time} 如0s
+//*
+.transition-duration(@transition-duration: 0s){
+        -webkit-transition-duration: @transition-duration;
+           -moz-transition-duration: @transition-duration;
+                transition-duration: @transition-duration;
+}
+
+//时间函数
+//*
+//*@param  {
+//*         [ ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | 
+//*         steps(<integer>[, [ start | end ] ]?) | cubic-bezier(<number>, <number>, <number>, <number>) ] 
+//*         [, [ ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | 
+//*         steps(<number>[, [ start | end ] ]?) | cubic-bezier(<number>, <number>, <number>, <number>) ] ]
+//*} 
+//*linear 规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）
+//*ease 规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）
+//*ease-in 规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）
+//*ease-out 规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）
+//*ease-in-out 规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）
+//*cubic-bezier(n,n,n,n) 在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值
+//*
+.transition-timing-function(@transition-timing: ease){
+        -webkit-transition-timing-function: @transition-timing;
+           -moz-transition-timing-function: @transition-timing;
+                transition-timing-function: @transition-timing;
+}
+
+//延迟时间
+//*
+//* @type {time} 如0s
+//*
+.transition-delay(@transition-delay: 0s) {
+  -webkit-transition-delay: @transition-delay;
+     -moz-transition-delay: @transition-delay;
+       -o-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
+}
+
+//简化transition
+.transition(@property: all, @duration: .3s, @timing: ease, @delay: 0s){
+  -webkit-transition:@property @duration @timing @delay;
+     -moz-transition:@property @duration @timing @delay;
+          transition:@property @duration @timing @delay;
+}
+
+
+//animation 动画
+//* @param {
+//*           [name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state]
+//*}
+.animation(@name,@duration: 1s,@timing: ease,@delay: 0s,@count: 1){
+  -webkit-animation: @name @duration @timing @delay @count;
+     -moz-animation: @name @duration @timing @delay @count;
+       -o-animation: @name @duration @timing @delay @count;
+          animation: @name @duration @timing @delay @count;
+}
+
+//animation-duration 设置动画在n秒内完成
+//* @param  { time }
+//*
+.animation-duration(@time: 1s){
+  -webkit-animation-duration: @time;
+     -moz-animation-duration: @time;
+       -o-animation-duration: @time;
+          animation-duration: @time;
+}
+
+//animation-duration 设置动画曲线
+//* @param  {
+//            [ linear | ease ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n) ]
+//}
+//*linear 动画从头到尾的速度是相同的
+//*ease 默认, 动画以低速开始，然后加快，在结束前变慢
+//*ease-in 动画以低速开始
+//*ease-out 动画以低速结束
+//*ease-in-out 动画以低速开始和结束
+//*cubic-bezier(n,n,n,n) 在 cubic-bezier 函数中自己的值, 可能的值是从 0 到 1 的数值
+//*
+.animation-timing(@function: ease){
+  -webkit-animation-timing-function: @function;
+     -moz-animation-timing-function: @function;
+       -o-animation-timing-function: @function;
+          animation-timing-function: @function;
+}
+
+//animation-delay  设置动画延迟时间
+//* @param  { time }
+//*
+.animation-delay(@time: 0s){
+  -webkit-animation-delay: @time;
+     -moz-animation-delay: @time;
+       -o-animation-delay: @time;
+          animation-delay: @time;
+}
+
+//animation-iteration-count   设置动画播放次数
+//* @param  { 
+//             [n | infinite] 
+//}
+//*n 一个数字，定义应该播放多少次动画
+//*infinite 指定动画应该播放无限次（永远）
+//*
+.animation-count (@num: 1){
+  -webkit-animation-iteration-count: @num;
+     -moz-animation-iteration-count: @num;
+       -o-animation-iteration-count: @num;
+          animation-iteration-count: @num;
+}
+
+
+
+//渐变
+//线性渐变 - Linear Gradients
+//*background:-prefix-linear-gradient(angle,startcolor,stopcolor);
+//*
+//*angle: 起始角度。 取值范围 0~360(deg),也可以直接使用left(90deg),top(180deg),bottom(0deg),right(270deg)来实现水平或垂直的渐变
+//*startcolor: 渐变起始颜色
+//*stopcolor: 渐变终止颜色
+//*
+.lineat-gradient(@angle:top, @start:#000, @stop:#ff050e){
+  background: -webkit-linear-gradient(@angle, @start, @stop);
+  background:    -moz-linear-gradient(@angle, @start, @stop);
+  background:      -o-linear-gradient(@angle, @start, @stop);
+  background:         linear-gradient(@angle, @start, @stop);
+}
