@@ -26,7 +26,7 @@ whir_css.less  -less源码，存放项目less源码
 		<td>.box-sizing()</td>
 		<td>box-sizing 盒模型计算方式</td>
 		<td>
-			可设参数 <br /> 参数1：@boxmodel - 盒子模式< br />默认值： content-box <br />
+			可设参数 <br /> 参数1：@boxmodel - 盒子模式<br />默认值： content-box <br />
 			可选值：<br /> content-box | padding-box | border-box
 		</td>
 	</tr>
