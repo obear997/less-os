@@ -54,6 +54,66 @@ init.less  -less源码，存放项目less源码
 		<td>可设参数<br /> 参数1：@mode - 宽度/高度<br /> 可选参数：width | height </td>
 	</tr>
 	<tr>
+		<td>.border-radius()</td>
+		<td>设置圆角</td>
+		<td>可设参数<br /> 参数1：@radius - 圆角值</td>
+	</tr>
+	<tr>
+		<td>.border-cus-radius()</td>
+		<td>自定义圆角</td>
+		<td>可设参数<br /> 参数1：@radiusTop - 顶部圆角<br /> 参数2：@radiusRight - 右侧圆角<br />参数3：@radiusBottom - 底部圆角<br />  参数4：@radiusLeft - 左侧圆角</td>
+	</tr>
+	<tr>
+		<td>.border-tl-radius()</td>
+		<td>设置左上角圆角</td>
+		<td>可设参数<br /> 参数1：@radius - 圆角值</td>
+	</tr>
+	<tr>
+		<td>.border-tr-radius()</td>
+		<td>设置右上角圆角</td>
+		<td>可设参数<br /> 参数1：@radius - 圆角值</td>
+	</tr>
+	<tr>
+		<td>.border-bl-radius()</td>
+		<td>设置左下角圆角</td>
+		<td>可设参数<br /> 参数1：@radius - 圆角值</td>
+	</tr>
+	<tr>
+		<td>.border-br-radius()</td>
+		<td>设置右下角圆角</td>
+		<td>可设参数<br /> 参数1：@radius - 圆角值</td>
+	</tr>
+	<tr>
+		<td>.border-image()</td>
+		<td>设置边框图片</td>
+		<td>可设参数<br /> 参数1：@url - 图片路径<br /> 参数2：@width - 宽度<br />参数3：@repeat - 循环模式</td>
+	</tr>
+	<tr>
+		<td>.no-box-shadow()</td>
+		<td>去除阴影</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>.box-shadow()</td>
+		<td>设置阴影</td>
+		<td>可设参数<br /> 参数1：@x - x轴偏移<br /> 参数2：@y - y轴偏移<br />参数3：@blur - 模糊距离<br /> 参数4：@color - 阴影颜色</td>
+	</tr>
+	<tr>
+		<td>.no-text-shadow()</td>
+		<td>去除文本阴影</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>.text-shadow()</td>
+		<td>设置文本阴影</td>
+		<td>可设参数<br /> 参数1：@x - x轴偏移<br /> 参数2：@y - y轴偏移<br />参数3：@blur - 模糊距离<br /> 参数4：@color - 阴影颜色</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
 		<td></td>
 		<td></td>
 		<td></td>
