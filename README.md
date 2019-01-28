@@ -109,16 +109,49 @@ init.less  -less源码，存放项目less源码
 		<td>可设参数<br /> 参数1：@x - x轴偏移<br /> 参数2：@y - y轴偏移<br />参数3：@blur - 模糊距离<br /> 参数4：@color - 阴影颜色</td>
 	</tr>
 	<tr>
+		<td>.text-overflow()</td>
+		<td>设置单行文本截取</td>
 		<td></td>
+	</tr>
+	<tr>
+		<td>.text-xline()</td>
+		<td>设置多行文本截取</td>
+		<td>可设参数：<br /> 参数1：@line - 截取行数<br /> 注：该方法只支持chrome内核浏览器</td>
+	</tr>
+	<tr>
+		<td>.pos-rel()</td>
+		<td>设置相对定位</td>
 		<td></td>
+	</tr>
+	<tr>
+		<td>.pos-abs()</td>
+		<td>设置绝对定位</td>
 		<td></td>
+	</tr>
+	<tr>
+		<td>.pos-fix()</td>
+		<td>设置窗口定位</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>.pos-center()</td>
+		<td>设置定位居中(margin-left),适合有固定宽度</td>
+		<td>可设参数<br /> 参数1：@width - 盒子宽度<br /> 参数2：@height - 盒子高度<br />参数3：@position - 定位方式</td>
+	</tr>
+	<tr>
+		<td>.pos-center-trans()</td>
+		<td>设置定位居中(translate)，适合没有固定宽度且不需要支持IE8以下浏览器</td>
+		<td>可设参数<br /> 参数1：@position - 定位方式</td>
+	</tr><tr>
+		<td>.opacity()</td>
+		<td>设置透明度</td>
+		<td>可设参数：<br /> 参数1：@opacity - 透明度（可选值：0 ~ 100）</td>
 	</tr>
 	<tr>
 		<td></td>
 		<td></td>
 		<td></td>
-	</tr>
-	<tr>
+	</tr><tr>
 		<td></td>
 		<td></td>
 		<td></td>
