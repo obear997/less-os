@@ -202,6 +202,51 @@ init.less  -less源码，存放项目less源码
 		<td>可设参数<br /> 参数1：@type - 设置裁切（默认值：no-clip）</td>
 	</tr>
 	<tr>
+		<td>.mask-origin()</td>
+		<td>背景开始的位置</td>
+		<td>可设参数<br /> 参数1：@type - 背景开始的位置</td>
+	</tr>
+	<tr>
+		<td>.mask-size()</td>
+		<td>设置遮罩图片尺寸</td>
+		<td>可设参数<br /> 参数1：@type - 设置遮罩图尺寸（默认值：auto）</td>
+	</tr>
+	<tr>
+		<td>.mask-typ()</td>
+		<td>设置不同的遮罩模式</td>
+		<td>可设参数<br /> 参数1：@type - 设置不同的遮罩模式（默认值：luminance）</td>
+	</tr>
+	<tr>
+		<td>.mask-composite()</td>
+		<td>表示当同时使用多个图片进行遮罩时候的混合方式</td>
+		<td>可设参数<br /> 参数1：@type，支持属性: [ add | subtract | intersect | exclude ]</td>
+	</tr>
+	<tr>
+		<td>.no-mask()</td>
+		<td>去除遮罩</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>.triangle()</td>
+		<td>使用css设置三角形</td>
+		<td>可设参数<br /> 参数1：top | right | bottom | left - 表示三角形朝向<br /> 参数2：width - 宽度<br /> 参数2：color - 三角形颜色</td>
+	</tr>
+	<tr>
+		<td>.content-columns()</td>
+		<td>分列布局</td>
+		<td>可设参数<br /> 参数1：@columnCount - 设置列数<br /> 参数2：@columnGap - 指定列之间的间距<br />参数3：@rule-width - 指定列之间的规则：宽度，样式和颜色<br />参数4：@rule-style - 指定列之间的样式<br />参数5：@rule-color - 指定列之间的颜色</td>
+	</tr>
+	<tr>
+		<td>.no-transform()</td>
+		<td>清除transform</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>.rotate()</td>
+		<td>设置旋转角度</td>
+		<td>可设参数<br /> 参数1：@degrees - 设置旋转角度</td>
+	</tr>
+	<tr>
 		<td></td>
 		<td></td>
 		<td></td>
