@@ -148,13 +148,58 @@ init.less  -less源码，存放项目less源码
 		<td>可设参数：<br /> 参数1：@opacity - 透明度（可选值：0 ~ 100）</td>
 	</tr>
 	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>.background-image()</td>
+		<td>设置背景图</td>
+		<td>可设参数<br /> 参数1：@image - 图片路径<br /> 参数2：@position - 图片定位<br />参数3：@repeat - 循环方式<br />参数4：@size - 背景图覆盖大小</td>
 	</tr><tr>
+		<td>.background-size()</td>
+		<td>背景尺寸</td>
+		<td>可设参数：<br /> 参数1：@size - 尺寸（默认值：auto）</td>
+	</tr>
+	<tr>
+		<td>.background-clip()</td>
+		<td>背景覆盖的位置</td>
+		<td>可设参数：<br /> 参数1：@background-clip - 背景覆盖的位置（默认值：border-box）</td>
+	</tr>
+	<tr>
+		<td>.background-origin()</td>
+		<td>背景开始的位置</td>
+		<td>可设参数：<br /> 参数1：@background-origin - 背景开始的位置（默认值：padding-box）</td>
+	</tr>
+	<tr>
+		<td>.background-rgba()</td>
+		<td>设置透明背景色</td>
+		<td>可设参数<br /> 参数1：@red - 红色通道色值<br /> 参数2：@green - 绿色通道色值<br />参数3：@blue - 蓝色通道色值<br />参数4：@alpha - 透明度</td>
+	</tr>
+	<tr>
+		<td>.mask()</td>
+		<td>设置遮罩</td>
+		<td>可设参数<br /> 参数1：@url - 遮罩图片路径<br /> 参数2：@position - 遮罩开始位置<br />参数3：@repeat - 循环方式<br />参数4：@size - 遮罩尺寸<br />参数5：@clip - 设置裁切方式</td>
+	</tr>
+	<tr>
+		<td>.mask-image()</td>
+		<td>设置遮罩图片</td>
+		<td>可设参数<br /> 参数1：@url - 遮罩图片路径</td>
+	</tr>
+	<tr>
+		<td>.mask-mode()</td>
 		<td></td>
-		<td></td>
-		<td></td>
+		<td>根据资源的类型自动采用合适的遮罩模式,目前仅Firefox浏览器支持,可以支持同事设置多个值,默认值是match-source</td>
+	</tr>
+	<tr>
+		<td>.mask-position()</td>
+		<td>设置图形位置</td>
+		<td>可设参数<br /> 参数1：@type - 设置图形位置</td>
+	</tr>
+	<tr>
+		<td>.mask-repeat()</td>
+		<td>设置图形填充</td>
+		<td>可设参数<br /> 参数1：@type - 设置图形填充（默认值：repeat）</td>
+	</tr>
+	<tr>
+		<td>.mask-clip()</td>
+		<td>设置裁切</td>
+		<td>可设参数<br /> 参数1：@type - 设置裁切（默认值：no-clip）</td>
 	</tr>
 	<tr>
 		<td></td>
