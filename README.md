@@ -247,6 +247,127 @@ init.less  -less源码，存放项目less源码
 		<td>可设参数<br /> 参数1：@degrees - 设置旋转角度</td>
 	</tr>
 	<tr>
+		<td>.rotate3d()</td>
+		<td>设置3D旋转</td>
+		<td>可设参数<br /> 参数1：@x - x轴<br /> 参数2：@y - y轴<br /> 参数2：@z - z轴<br /> @degrees - 角度</td>
+	</tr>
+	<tr>
+		<td>.rotateX()</td>
+		<td>设置x轴偏移</td>
+		<td>可设参数<br /> 参数1：@degrees - 设置旋转角度</td>
+	</tr>
+	<tr>
+		<td>.rotateY()</td>
+		<td>设置y轴偏移</td>
+		<td>可设参数<br /> 参数1：@degrees - 设置旋转角度</td>
+	</tr>
+	<tr>
+		<td>.rotateZ()</td>
+		<td>设置z轴偏移</td>
+		<td>可设参数<br /> 参数1：@degrees - 设置旋转角度</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>.scale()</td>
+		<td>设置缩放</td>
+		<td>可设参数<br /> 参数1：@x - 设置水平缩放<br />参数2：@y - 设置垂直缩放</td>
+	</tr>
+	<tr>
+		<td>.scaleX()</td>
+		<td>设置x轴缩放</td>
+		<td>可设参数<br /> 参数1：@x - 设置水平缩放</td>
+	</tr>
+	<tr>
+		<td>.scaleY()</td>
+		<td>设置y轴缩放</td>
+		<td>可设参数<br /> 参数1：@y - 设置垂直缩放</td>
+	</tr>
+	<tr>
+		<td>.translate()</td>
+		<td>设置偏移</td>
+		<td>可设参数<br /> 参数1：@x - 设置水平偏移<br />参数2：@y - 设置垂直偏移</td>
+	</tr>
+	<tr>
+		<td>.translateX()</td>
+		<td>设置x轴偏移</td>
+		<td>可设参数<br /> 参数1：@x - 设置x轴偏移</td>
+	</tr>
+	<tr>
+		<td>.translateY()</td>
+		<td>设置y轴偏移</td>
+		<td>可设参数<br /> 参数1：@y - 设置y轴偏移</td>
+	</tr>
+	<tr>
+		<td>.translateZ()</td>
+		<td>设置z轴偏移</td>
+		<td>可设参数<br /> 参数1：@z - 设置z轴偏移</td>
+	</tr>
+	<tr>
+		<td>.translate3d()</td>
+		<td>设置偏移</td>
+		<td>可设参数<br /> 参数1：@x - 设置x轴偏移<br />参数2：@y - 设置y轴偏移<br />参数3：@z - 设置z轴偏移</td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
 		<td></td>
 		<td></td>
 		<td></td>
