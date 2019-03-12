@@ -1,28 +1,35 @@
-//=============================================
-//@des:      less-os
-//@author:   obear
-//@time:     2018-12-17
-//@summary:  Define public variables and methods
-//=============================================
+//*
+//*@des    : less-os
+//*@author : obear
+//*@time   : 2019-02-12
+//*@summary: Define public variables and methods
+//*
 
 
 
-//设置全局变量
-//=============================================
-@base-bg-color: #fff;  //页面基础背景色
-@base-color: #999;  //页面基础颜色
-@base-stress-color: #f8b530; //选中、突出颜色
-@base-font: Microsoft YaHei,'微软雅黑','宋体';  //页面基础字体
-@base-font-size: 3rem;  //页面基础字体大小
-@base-line-height: 1.5;  //页面基础行高
-@base-a-color: #666460;  //a默认颜色
-@base-a-hover-color: #FF5800;  //a:hover默认颜色
-@input-place-color: #c4c4c4;  //input-placeholder默认颜色
+//*
+//*设置全局变量
+//*
+@base-color1        : #fff; //页面主色调1
+@base-color2        : #666; //页面主色调2
+@base-stress-color  : #f8b530; //选中、突出颜色
+
+@base-font          : arial,Microsoft YaHei,'微软雅黑','宋体'; //页面基础字体
+@base-font-color    : #999; //页面基础颜色
+@base-font-size     : 14px; //页面基础字体大小
+@base-line-height   : 1.5; //页面基础行高
+
+@base-a-color       : #666460; //a默认颜色
+@base-a-hover-color : #FF5800; //a:hover默认颜色
+
+@input-place-color  : #c4c4c4; //input-placeholder默认颜色
+@font-url           : '../fonts'; //设置字体存放目录
 
 
 
-//定义全局方法
-//=============================================
+//*
+//*定义代码块 和 公用方法
+//*
 //清除margin和padding
 .clear-mp(){
     margin: 0; padding: 0;
@@ -771,4 +778,28 @@
   background:    -moz-linear-gradient(@angle, @start, @stop);
   background:      -o-linear-gradient(@angle, @start, @stop);
   background:         linear-gradient(@angle, @start, @stop);
+}
+
+
+
+//CSS3 filter(滤镜)
+//高斯模糊 - blur
+//给图像设置高斯模糊。"radius"一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；
+//如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。
+//提示: 使用空格分隔多个滤镜。
+//*参数:
+//*filter: 
+//*       [ none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia() | url() ]
+//*
+.no-filter(){
+  -webkit-filter: none;
+     -moz-filter: none;
+      -ms-filter: none;
+          filter: none;
+}
+.filter-blur(@value){
+  -webkit-filter: blur(@value);
+     -moz-filter: blur(@value);
+      -ms-filter: blur(@value);
+          filter: blur(@value);
 }

@@ -4,24 +4,27 @@
 @import "less_os.less";
 
 
-//*****************************************************************************************//
-/*全局初始化样式*/
+/*
+** 本站采用rem作为单位，rem不兼容IE8，如需兼容可以在rem之前设置px单位
+*/
+
 *{ outline: none;
    &,
    &:before,
-   &:after{ .box-sizing(border-box );}
+   &:after{ .box-sizing(border-box);}
 }
-html{ height: 100%;
--webkit-text-size-adjust:100%;
-    -ms-text-size-adjust: 100%;
+html{ font-size:625%;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+
+  &,body{ overflow-x: hidden;}
 }
-body{ padding:0; margin:0 auto; font-size: @base-font-size; line-height: @base-line-height; font-family: @base-font; color: @base-color; min-width: 320px; width: 100%; zoom:1;
-background-color: @base-bg-color;
+body{ padding:0; margin:0 auto; font-size: 14px; font-size: @base-font-size; font-family: @base-font; line-height: @base-line-height; color: @base-font-color; min-width: 320px; width: 100%; zoom:1; position: relative;
 /*禁用Webkit内核浏览器的文字大小调整功能*/
 -webkit-text-size-adjust:none; 
 
 /*取消点击出现半透明的灰色背景*/
--webkit-tap-highlight-color: rgba(0,0,0,0); 
+-webkit-tap-highlight-color: rgba(0,0,0,0);  
 -webkit-tap-highlight: rgba(0,0,0,0);
 
 /*控制文本可选性 - 未启用*/
@@ -30,7 +33,7 @@ background-color: @base-bg-color;
         user-select: none; */
         
 /*设置字体的抗锯齿或者说光滑度*/
--webkit-font-smoothing: antialiased
+-webkit-font-smoothing: antialiased;
 }
 
 /*默认去除ul、li的默认样式*/
@@ -40,7 +43,7 @@ address,caption,cite,code,dfn,em,strong,th,var{ font-style:normal; font-weight:n
 
 /*初始化下拉菜单、单行输入框、多行输入框的样式*/
 select,input,textarea{
-color: @base-color; .border-radius(0); font-family:inherit; font-size:inherit; font-weight:inherit; 
+color: @base-font-color; .border-radius(0); font-family:inherit; font-size:inherit; font-weight:inherit; 
 /*for IE*/
 *font-size:100%;
 } 
@@ -96,11 +99,9 @@ a{ color: @base-a-color; text-decoration:none; -webkit-tap-highlight-color:rgba(
 @media(min-width:1200px){
     .w1200{ width: 1200px;}
 }
-//*****************************************************************************************//
 
 
 
-//*****************************************************************************************//
 /*页面框架结构*/
 .contain{} /*页面主体内容*/
 .slidebar{} /*边侧菜单*/
@@ -130,8 +131,6 @@ a{ color: @base-a-color; text-decoration:none; -webkit-tap-highlight-color:rgba(
 /*页面二级/左侧/右侧菜单*/
 .slidebar{}
 /*页面二级/左侧/右侧菜单*/
-//*****************************************************************************************//
-
 
 
 
@@ -141,5 +140,8 @@ a{ color: @base-a-color; text-decoration:none; -webkit-tap-highlight-color:rgba(
 
 
 /*网站地图*/
-.ul_sitemap li{ border-bottom:dotted 1px #ddd; padding:5px 0px;}
-.ul_sitemap li strong{ width:90px; display:inline-block;}
+.ul_sitemap{
+  li{ border-bottom:dotted 1px #ddd; padding:5px 0px;
+    strong{ width:90px; display:inline-block;}
+  }
+}
